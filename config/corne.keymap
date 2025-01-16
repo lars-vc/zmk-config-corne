@@ -17,6 +17,35 @@
 };
 
 / {
+    macros {
+        alt_tab: alt_tab {
+                        compatible = "zmk,behavior-macro";
+                        #binding-cells = <0>;
+                        bindings = 
+                            <&macro_press &kp LALT>,
+                            <&macro_tap &kp TAB>,
+                            <&macro_release &kp LALT>
+                        ;
+                 };
+    };
+    combos {
+        compatible = "zmk,behavior-macro";
+        combo_backspace {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp BACKSPACE>;
+        };
+        combo_delete {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp DELETE>;
+        };
+        combo_dotcomma {
+            timeout-ms = <50>;
+            key-positions = <33 34>;
+            bindings = <&kp SEMICOLON>;
+        };
+    };
     keymap { 
         compatible = "zmk,keymap"; 
         default_layer {
@@ -29,19 +58,32 @@
             >;
         };
         spec_layer {
-            display-name = "Spec";
+            display-name = "Spec-ops";
             bindings = <
-                &none &mt TILDE GRAVE &none &kp N9 &kp N8 &kp N7           &kp EXCL &kp APOS &kp STAR &kp PLUS &kp AT &none
+                &none &mt TILDE GRAVE &none &kp N9 &kp N8 &kp N7           &kp EXCL &kp APOS &kp STAR &kp PLUS &kp AT              &none
                 &none &trans &trans &kp N6 &kp N5 &kp N4                   &kp CARET &kp LPAR &kp RPAR &kp EQUAL &mt RSHIFT DOLLAR &none
-                &none &trans &trans &kp N3 &kp N2 &kp N1                   &kp UNDER &kp LBKT &kp RBKT &kp MINUS &kp BSLH
+                &none &trans &trans &kp N3 &kp N2 &kp N1                   &kp UNDER &kp LBKT &kp RBKT &kp MINUS &kp BSLH          &none
                                 &trans &kp N0 &trans                        &trans &trans &trans
             >;
         };
-        /*
         move_layer {
             display-name = "Move-it";
+            bindings = <
+                &none &trans &kp C_PREVIOUS &trans &kp PERCENT &kp PIPE            &msc SCRL_LEFT &msc SCRL_DOWN &msc SCRL_UP &msc SCRL_RIGHT &kp C_VOL_UP &none
+                &none &kp LSHIFT &lt 3 TAB &trans &trans &kp ENTER                 &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp RSHIFT &none
+                &none &trans &kp C_NEXT &trans &kp HASH &kp AMPS                   &alt_tab &kp HOME &kp END &kp C_PP &kp C_VOL_DN &none
+                                   &trans &trans &trans                            &trans &trans &trans
+            >;
         };
-        */
+        fn_layer {
+            display-name = "Funky";
+            bindings = <
+                &none &trans &trans &trans &trans &trans                      &kp F12 &kp F7 &kp F8 &kp F9 &trans &none
+                &none &trans &trans &trans &trans &trans                      &kp F10 &kp F4 &kp F5 &kp F6 &kp CAPS &none
+                &none &trans &trans &trans &trans &trans                      &kp F11 &kp F1 &kp F2 &kp F3 &trans &none
+                                    &trans &trans &trans                      &trans &trans &trans
+            >;
+        }
     };
 };
 
