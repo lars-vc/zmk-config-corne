@@ -37,9 +37,11 @@
                                 &trans &kp N0 &trans                        &trans &trans &trans
             >;
         };
+        /*
         move_layer {
             display-name = "Move-it";
         };
+        */
     };
 };
 
