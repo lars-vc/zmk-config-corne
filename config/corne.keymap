@@ -32,17 +32,17 @@
         compatible = "zmk,combos";
         combo_backspace {
             timeout-ms = <50>;
-            key-positions = <16 17>;
+            key-positions = <15 16>;
             bindings = <&kp BACKSPACE>;
         };
         combo_delete {
             timeout-ms = <50>;
-            key-positions = <8 9>;
+            key-positions = <7 8>;
             bindings = <&kp DELETE>;
         };
         combo_dotcomma {
             timeout-ms = <50>;
-            key-positions = <33 34>;
+            key-positions = <32 33>;
             bindings = <&kp SEMICOLON>;
         };
     };
