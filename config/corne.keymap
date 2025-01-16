@@ -83,7 +83,7 @@
                 &none &trans &trans &trans &trans &trans                      &kp F11 &kp F1 &kp F2 &kp F3 &trans &none
                                     &trans &trans &trans                      &trans &trans &trans
             >;
-        }
+        };
     };
 };
 
