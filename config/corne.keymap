@@ -31,9 +31,9 @@
                         compatible = "zmk,behavior-macro";
                         #binding-cells = <0>;
                         bindings = 
-                            <&macro_press &kp LALT>,
-                            <&macro_tap &kp TAB>,
-                            <&macro_release &kp LALT>
+                            <&macro_press &kp LSHIFT>,
+                            <&macro_tap &kp END &kp HOME &kp F5>,
+                            <&macro_release &kp LSHIFT>
                         ;
         };
     };
@@ -55,13 +55,36 @@
             bindings = <&kp SEMICOLON>;
         };
     };
+    behaviors {
+        // num list: <1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41>;
+        // taken from https://zmk.dev/docs/keymaps/behaviors/hold-tap
+        // I don't use full homerow mods this is just for shift a
+        bhm: balanced_homerow_mods { 
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <-1>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <1,2,3,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41>; // opposite of <4,14,15>;
+        };
+        spec: specops_layer_key { 
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            quick-tap-ms = <-1>;
+            flavor = "hold-preferred";
+            bindings = <&lt 1 S>
+            hold-trigger-key-positions = <1,2,6,7,8,9,10,11,12,13,14,18,19,20,21,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41>; // opposite of <3,4,5,15,16,17,27,28,29>;
+        };
+    };
     keymap { 
         compatible = "zmk,keymap"; 
         default_layer {
             display-name = "Base";
             bindings = < 
                 &none    &kp Q &kp W &kp E &kp R &kp T                     &kp Y &kp U &kp I &kp O &kp P    &none
-                &none    &mt LSHIFT A &lt 1 S &lt 2 D &kp F &kp G                  &kp H &kp J &kp K &kp L &kp LSHIFT    &none
+                &none    &bhm LSHIFT A &spec &lt 2 D &kp F &kp G         &kp H &kp J &kp K &kp L &kp LSHIFT    &none
                 &none    &kp Z &kp X &kp C &kp V &kp B                     &kp N &kp M &kp COMMA &kp DOT &kp FSLH     &none
                                     &kp LALT &kp ESC &mt LCTRL SPACE       &none &kp RGUI &none 
             >;
@@ -87,7 +110,7 @@
         fn_layer {
             display-name = "Funky";
             bindings = <
-                &none &trans &trans &trans &trans &trans                      &kp F12 &kp F7 &kp F8 &kp F9 &trans &none
+                &none &trans &trans &trans &teradata &trans                      &kp F12 &kp F7 &kp F8 &kp F9 &trans &none
                 &none &trans &trans &trans &lt 4  &trans                      &kp F10 &kp F4 &kp F5 &kp F6 &kp CAPS &none
                 &none &trans &trans &trans &trans &trans                      &kp F11 &kp F1 &kp F2 &kp F3 &trans &none
                                     &trans &trans &trans                      &trans &trans &trans
