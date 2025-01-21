@@ -111,7 +111,7 @@
             display-name = "Funky";
             bindings = <
                 &none &trans &trans &trans &teradata &trans                      &kp F12 &kp F7 &kp F8 &kp F9 &trans &none
-                &none &trans &trans &trans &lt 4  &trans                      &kp F10 &kp F4 &kp F5 &kp F6 &kp CAPS &none
+                &none &trans &trans &trans &mo 4 &trans                      &kp F10 &kp F4 &kp F5 &kp F6 &kp CAPS &none
                 &none &trans &trans &trans &trans &trans                      &kp F11 &kp F1 &kp F2 &kp F3 &trans &none
                                     &trans &trans &trans                      &trans &trans &trans
             >;
